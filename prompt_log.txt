@@ -39,3 +39,7 @@ push code lên github
 [2026-03-26 20:07:01]
 hãy note lại các câu promt của tôi đã hỏi vào 1 file .txt trong project này, các lệnh sau cũng tự động note và hết, nhớ kèm tag ngày, thời gian, giờ, phút, giây
 ---
+
+[2026-03-26 21:54:46]
+Hãy viết CSS cho Layout này theo phong cách Mobile First, sử dụng đơn vị rem thay vì px. Ưu tiên dùng CSS Grid auto-fit cho danh sách sản phẩm và đảm bảo không sử dụng float hay position tuyệt đối cho bố cục chính
+---
