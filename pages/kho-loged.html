@@ -200,18 +200,24 @@
         <div class="banner-subheading">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ (SEB)</div>
       </div>
       <div class="banner-actions">
-        <button type="button" aria-label="Logout">
+        <a href="home-login.html" class="banner-action" aria-label="Hồ sơ">
           👤 Đã Đăng Nhập
-        </button>
-        <button type="button" aria-label="Edit">
+        </a>
+        <a href="../index.html" class="banner-action" aria-label="Đăng xuất">
           ✏️
-        </button>
+        </a>
       </div>
     </header>
 
-    <!-- Navbar -->
+    <!-- Thanh điều hướng -->
     <nav class="navbar">
-      <div class="navbar-title">KHO THIẾT BỊ</div>
+      <div class="navbar__tabs">
+        <a class="tab" href="../index.html" data-tab="home">Trang chủ</a>
+        <a class="tab tab--active" href="kho-loged.html" data-tab="inventory">Kho thiết bị</a>
+        <a class="tab" href="dang-ky-phong-hoc.html" data-tab="rooms">Đăng ký phòng học</a>
+        <a class="tab" href="kho-ca-nhan.html" data-tab="personal">Kho cá nhân</a>
+        <a class="tab" href="home-login.html" data-tab="profile">Hồ sơ</a>
+      </div>
     </nav>
 
     <!-- Search -->
