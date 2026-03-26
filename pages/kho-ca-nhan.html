@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kho Cá Nhân - Hệ Thống Mượn/Trả Thiết Bị SEB</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .kho-ca-nhan-container {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 2rem;
+      padding: 2rem 1rem;
+      max-width: 90rem;
+      margin: 0 auto;
+      flex: 1;
+    }
+
+    .sidebar {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 0.25rem;
+      box-shadow: var(--shadow);
+      height: fit-content;
+    }
+
+    .sidebar-title {
+      font-size: var(--fs-md);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .sidebar-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: var(--fs-sm);
+    }
+
+    .sidebar-item:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-label {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .sidebar-value {
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+    }
+
+    .main-content {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 0.25rem;
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      font-size: var(--fs-lg);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .tab {
+      padding: 0.75rem 1rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: var(--fs-base);
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .tab.active {
+      color: var(--banner-blue);
+      border-bottom-color: var(--banner-blue);
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow-x: auto;
+    }
+
+    .table th,
+    .table td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+      font-size: var(--fs-sm);
+    }
+
+    .table th {
+      background: #f8f9fa;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .table tr:hover {
+      background: #f8f9fa;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .status-borrowed {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .status-returned {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .status-broken {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    .status-pending {
+      background: #d1ecf1;
+      color: #0c5460;
+    }
+
+    .btn-action {
+      padding: 0.5rem 0.75rem;
+      background: var(--banner-blue);
+      color: var(--white);
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: opacity 0.3s;
+    }
+
+    .btn-action:hover {
+      opacity: 0.9;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 56.25rem) {
+      .kho-ca-nhan-container {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .table {
+        font-size: var(--fs-sm);
+      }
+
+      .table th,
+      .table td {
+        padding: 0.5rem;
+      }
+    }
+
+    @media (max-width: 37.5rem) {
+      .tabs {
+        gap: 0.5rem;
+      }
+
+      .tab {
+        padding: 0.5rem 0.75rem;
+        font-size: var(--fs-sm);
+      }
+
+      .btn-action {
+        font-size: 0.65rem;
+        padding: 0.4rem 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Banner -->
+    <header class="banner">
+      <div class="banner-logo">
+        <img src="../image/figma/logo.png" alt="Logo Trường">
+      </div>
+      <div class="banner-content">
+        <div class="banner-heading">TRƯỜNG TRUNG HỌC CƠ SỞ LỘC AN</div>
+        <div class="banner-subheading">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ (SEB)</div>
+      </div>
+      <div class="banner-actions">
+        <button type="button" aria-label="Account">
+          👤 Nguyễn Văn A
+        </button>
+        <button type="button" aria-label="Edit">
+          ✏️
+        </button>
+      </div>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-title" style="display: flex; gap: 1rem;">
+        <span>📦 KHO CÁ NHÂN</span>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="kho-ca-nhan-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h3 class="sidebar-title">Thông Tin Cá Nhân</h3>
+        
+        <div class="sidebar-item">
+          <div class="sidebar-label">Tên:</div>
+          <div class="sidebar-value">Nguyễn Văn A</div>
+        </div>
+        
+        <div class="sidebar-item">
+          <div class="sidebar-label">Lớp:</div>
+          <div class="sidebar-value">10A1</div>
+        </div>
+        
+        <div class="sidebar-item">
+          <div class="sidebar-label">Email:</div>
+          <div class="sidebar-value">student@school.edu</div>
+        </div>
+        
+        <div class="sidebar-item">
+          <div class="sidebar-label">Mã Học Sinh:</div>
+          <div class="sidebar-value">SH-2024-001</div>
+        </div>
+
+        <h3 class="sidebar-title" style="margin-top: 1.5rem;">Thống Kê</h3>
+        
+        <div class="sidebar-item">
+          <div class="sidebar-label">Đang Mượn:</div>
+          <div class="sidebar-value" style="color: #ffc107; font-weight: 700; font-size: 1.25rem;">3</div>
+        </div>
+        
+        <div class="sidebar-item">
+          <div class="sidebar-label">Đã Trả:</div>
+          <div class="sidebar-value" style="color: #28a745; font-weight: 700; font-size: 1.25rem;">15</div>
+        </div>
+        
+        <div class="sidebar-item">
+          <div class="sidebar-label">Quá Hạn:</div>
+          <div class="sidebar-value" style="color: #dc3545; font-weight: 700; font-size: 1.25rem;">0</div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <section class="main-content">
+        <h2 class="section-title">Lịch Sử Mượn/Trả</h2>
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <button class="tab active" onclick="switchTab(this, 'all')">Tất Cả</button>
+          <button class="tab" onclick="switchTab(this, 'borrowed')">Đang Mượn</button>
+          <button class="tab" onclick="switchTab(this, 'returned')">Đã Trả</button>
+          <button class="tab" onclick="switchTab(this, 'broken')">Báo Hỏng</button>
+        </div>
+
+        <!-- All Tab -->
+        <div id="all" class="tab-content">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Tên Thiết Bị</th>
+                <th>Mã</th>
+                <th>Ngày Mượn</th>
+                <th>Hạn Trả</th>
+                <th>Trạng Thái</th>
+                <th>Hành Động</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Máy Chiếu Digital</td>
+                <td>EQ-001</td>
+                <td>10/12/2024</td>
+                <td>17/12/2024</td>
+                <td><span class="status-badge status-borrowed">Đang Mượn</span></td>
+                <td><button class="btn-action">Trả</button></td>
+              </tr>
+              <tr>
+                <td>Laptop HP</td>
+                <td>EQ-010</td>
+                <td>08/12/2024</td>
+                <td>15/12/2024</td>
+                <td><span class="status-badge status-borrowed">Đang Mượn</span></td>
+                <td><button class="btn-action">Trả</button></td>
+              </tr>
+              <tr>
+                <td>Loa Bluetooth JBL</td>
+                <td>EQ-005</td>
+                <td>05/12/2024</td>
+                <td>12/12/2024</td>
+                <td><span class="status-badge status-returned">Đã Trả</span></td>
+                <td><button class="btn-action">Chi Tiết</button></td>
+              </tr>
+              <tr>
+                <td>Micro Karaoke</td>
+                <td>EQ-008</td>
+                <td>01/12/2024</td>
+                <td>08/12/2024</td>
+                <td><span class="status-badge status-broken">Báo Hỏng</span></td>
+                <td><button class="btn-action">Xem</button></td>
+              </tr>
+              <tr>
+                <td>Màn Hình LCD</td>
+                <td>EQ-003</td>
+                <td>25/11/2024</td>
+                <td>02/12/2024</td>
+                <td><span class="status-badge status-returned">Đã Trả</span></td>
+                <td><button class="btn-action">Chi Tiết</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- Copyright -->
+    <footer class="copyright" style="margin-top: 2rem;">
+      <p><strong>Copyright 2025</strong></p>
+      <p>Website này là tài sản thuộc quyền sở hữu hợp pháp của OFM.<br>
+        Nội dung, hình ảnh và mã nguồn được bảo hộ theo quy định pháp luật hiện hành.</p>
+      <p>Mọi thông chi tiết xin liên hệ<br>
+        Hotline: 0344655621</p>
+    </footer>
+
+    <!-- Note Section -->
+    <div class="footer-note">
+      <div class="footer-note-icon">
+        <img src="../image/figma/icon-idea.png" alt="Idea icon">
+      </div>
+      <div class="footer-note-text">Bạn có thể quét mã QR để mượn, trả và báo hỏng thiết bị nhanh chóng!</div>
+    </div>
+  </div>
+
+  <script>
+    function switchTab(element, tabName) {
+      // Update tab active state
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      element.classList.add('active');
+      
+      // Show corresponding content
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.style.display = 'none';
+      });
+      document.getElementById(tabName)?.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

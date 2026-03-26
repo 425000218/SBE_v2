@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Ký Phòng Học - Hệ Thống Mượn/Trả Thiết Bị SEB</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .booking-container {
+      display: flex;
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 90rem;
+      margin: 0 auto;
+      flex: 1;
+    }
+
+    .booking-info {
+      flex: 0 0 30%;
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 0.25rem;
+      box-shadow: var(--shadow);
+      height: fit-content;
+    }
+
+    .booking-form-section {
+      flex: 1;
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 0.25rem;
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      font-size: var(--fs-md);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-row-full {
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-label {
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+    }
+
+    .form-input,
+    .form-select {
+      padding: 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 0.25rem;
+      font-family: inherit;
+      font-size: var(--fs-sm);
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--banner-blue);
+      box-shadow: 0 0 0 2px rgba(0, 136, 255, 0.1);
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .time-slot {
+      padding: 0.5rem;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      font-size: var(--fs-sm);
+      cursor: pointer;
+      border-radius: 0.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .time-slot:hover {
+      background-color: rgba(0, 136, 255, 0.1);
+      border-color: var(--banner-blue);
+    }
+
+    .time-slot.selected {
+      background-color: var(--banner-blue);
+      color: var(--white);
+      border-color: var(--banner-blue);
+    }
+
+    .info-item {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: var(--fs-sm);
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .info-value {
+      color: var(--text-secondary);
+    }
+
+    .submit-button {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 56.25rem) {
+      .booking-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .booking-info {
+        flex: none;
+        width: 100%;
+      }
+
+      .booking-form-section {
+        flex: none;
+        width: 100%;
+      }
+
+      .form-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Banner -->
+    <header class="banner">
+      <div class="banner-logo">
+        <img src="../image/figma/logo.png" alt="Logo Trường">
+      </div>
+      <div class="banner-content">
+        <div class="banner-heading">TRƯỜNG TRUNG HỌC CƠ SỞ LỘC AN</div>
+        <div class="banner-subheading">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ (SEB)</div>
+      </div>
+      <div class="banner-actions">
+        <button type="button" aria-label="Login">
+          👤
+        </button>
+        <button type="button" aria-label="Edit">
+          ✏️
+        </button>
+      </div>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-title">ĐĂNG KÝ PHÒNG HỌC</div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="booking-container">
+      <!-- Booking Info Sidebar -->
+      <aside class="booking-info">
+        <h3 class="section-title">Thông Tin Yêu Cầu</h3>
+        
+        <div class="info-item">
+          <span class="info-label">Người Dùng:</span><br>
+          <span class="info-value">Nguyễn Văn A</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="info-label">Lớp:</span><br>
+          <span class="info-value">10A1</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="info-label">Phòng Chọn:</span><br>
+          <span class="info-value">Phòng 101</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="info-label">Ngày:</span><br>
+          <span class="info-value2" id="selectedDate">--</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="info-label">Tiết:</span><br>
+          <span class="info-value" id="selectedTime">--</span>
+        </div>
+      </aside>
+
+      <!-- Booking Form -->
+      <section class="booking-form-section">
+        <h3 class="section-title">Chọn Phòng và Thời Gian</h3>
+        
+        <form>
+          <!-- Classroom Selection -->
+          <div class="form-group form-row-full">
+            <label class="form-label">Phòng Học</label>
+            <select class="form-select" required>
+              <option value="">-- Chọn phòng --</option>
+              <option value="101">Phòng 101 - Máy Tính</option>
+              <option value="102">Phòng 102 - Hóa Học</option>
+              <option value="103">Phòng 103 - Vật Lý</option>
+              <option value="104">Phòng 104 - Sinh Học</option>
+            </select>
+          </div>
+
+          <!-- Date Selection -->
+          <div class="form-group form-row-full">
+            <label class="form-label">Chọn Ngày</label>
+            <input type="date" class="form-input" id="dateInput" required>
+          </div>
+
+          <!-- Time Slots -->
+          <div class="form-group form-row-full">
+            <label class="form-label">Chọn Tiết Học</label>
+            <div class="schedule-grid" style="grid-template-columns: repeat(5, 1fr);">
+              <div class="time-slot" onclick="selectTime(this, '1')">Tiết 1<br>(7:00-7:45)</div>
+              <div class="time-slot" onclick="selectTime(this, '2')">Tiết 2<br>(7:50-8:35)</div>
+              <div class="time-slot" onclick="selectTime(this, '3')">Tiết 3<br>(8:40-9:25)</div>
+              <div class="time-slot" onclick="selectTime(this, '4')">Tiết 4<br>(9:30-10:15)</div>
+              <div class="time-slot" onclick="selectTime(this, '5')">Tiết 5<br>(10:30-11:15)</div>
+              <div class="time-slot" onclick="selectTime(this, '6')">Tiết 6<br>(13:00-13:45)</div>
+              <div class="time-slot" onclick="selectTime(this, '7')">Tiết 7<br>(13:50-14:35)</div>
+              <div class="time-slot" onclick="selectTime(this, '8')">Tiết 8<br>(14:40-15:25)</div>
+              <div class="time-slot" onclick="selectTime(this, '9')">Tiết 9<br>(15:30-16:15)</div>
+            </div>
+          </div>
+
+          <!-- Additional Info -->
+          <div class="form-group form-row-full">
+            <label class="form-label">Ghi Chú (Tùy Chọn)</label>
+            <textarea class="form-input" rows="4" placeholder="Nhập ghi chú thêm..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary submit-button">GỬI YÊU CẦU</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- Copyright -->
+    <footer class="copyright">
+      <p><strong>Copyright 2025</strong></p>
+      <p>Website này là tài sản thuộc quyền sở hữu hợp pháp của OFM.<br>
+        Nội dung, hình ảnh và mã nguồn được bảo hộ theo quy định pháp luật hiện hành.</p>
+      <p>Mọi thông chi tiết xin liên hệ<br>
+        Hotline: 0344655621</p>
+    </footer>
+
+    <!-- Note Section -->
+    <div class="footer-note">
+      <div class="footer-note-icon">
+        <img src="../image/figma/icon-idea.png" alt="Idea icon">
+      </div>
+      <div class="footer-note-text">Bạn có thể quét mã QR để mượn, trả và báo hỏng thiết bị nhanh chóng!</div>
+    </div>
+  </div>
+
+  <script>
+    function selectTime(element, tiết) {
+      // Remove previous selection
+      document.querySelectorAll('.time-slot.selected').forEach(slot => {
+        slot.classList.remove('selected');
+      });
+      // Add selection to current
+      element.classList.add('selected');
+      document.getElementById('selectedTime').textContent = `Tiết ${tiết}`;
+    }
+
+    // Update date display
+    document.getElementById('dateInput')?.addEventListener('change', (e) => {
+      const date = new Date(e.target.value);
+      const formattedDate = date.toLocaleDateString('vi-VN');
+      document.getElementById('selectedDate').textContent = formattedDate;
+    });
+
+    // Handle form submission
+    document.querySelector('form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Yêu cầu đăng ký phòng học được gửi (demo)');
+    });
+  </script>
+</body>
+</html>

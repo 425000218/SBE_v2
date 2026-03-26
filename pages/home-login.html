@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nhà - Hệ Thống Mươn/Trả Thiết Bị SEB (Đăng Nhập)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <!-- Banner -->
+    <header class="banner">
+      <div class="banner-logo">
+        <img src="../image/figma/logo.png" alt="Logo Trường">
+      </div>
+      <div class="banner-content">
+        <div class="banner-heading">TRƯỜNG TRUNG HỌC CƠ SỞ LỘC AN</div>
+        <div class="banner-subheading">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ (SEB)</div>
+      </div>
+      <div class="banner-actions">
+        <button type="button" aria-label="Account" title="Tài khoản của tôi">
+          👤
+        </button>
+        <button type="button" aria-label="Logout">
+          ✏️
+        </button>
+      </div>
+    </header>
+
+    <!-- Navbar with Tabs -->
+    <nav style="background-color: rgba(1, 139, 251, 0.29); display: flex; gap: 3rem; align-items: center; justify-content: center; padding: 0.6875rem 0; flex-shrink: 0;">
+      <div style="font-size: var(--fs-2xl); font-weight: 500; color: #015AFF; text-align: center;">TRANG CHỦ</div>
+    </nav>
+
+    <!-- Stats Section -->
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; padding: 2rem 1rem; max-width: 90rem; margin: 0 auto; width: 100%;">
+      <article style="background: white; padding: 1.5rem; border-radius: 0.25rem; box-shadow: var(--shadow); text-align: center;">
+        <div style="font-size: 2rem; font-weight: 700; color: var(--banner-blue);">5</div>
+        <p style="margin-top: 0.5rem; color: var(--text-secondary);">Thiết Bị Đang Mượn</p>
+      </article>
+      <article style="background: white; padding: 1.5rem; border-radius: 0.25rem; box-shadow: var(--shadow); text-align: center;">
+        <div style="font-size: 2rem; font-weight: 700; color: #28a745;">12</div>
+        <p style="margin-top: 0.5rem; color: var(--text-secondary);">Thiết Bị Đã Trả</p>
+      </article>
+      <article style="background: white; padding: 1.5rem; border-radius: 0.25rem; box-shadow: var(--shadow); text-align: center;">
+        <div style="font-size: 2rem; font-weight: 700; color: #ffc107;">3</div>
+        <p style="margin-top: 0.5rem; color: var(--text-secondary);">Yêu Cầu Chờ Xử Lý</p>
+      </article>
+    </section>
+
+    <!-- Recent Borrowed Section -->
+    <section style="padding: 2rem 1rem; background: white; margin-top: 1rem;">
+      <div style="max-width: 90rem; margin: 0 auto;">
+        <h2 style="font-size: var(--fs-lg); font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Thiết Bị Gần Đây</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+          <article style="background: #f8f9fa; padding: 1rem; border-radius: 0.25rem;">
+            <div style="aspect-ratio: 1; background: #e0e0e0; border-radius: 0.25rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: #999;">Ảnh</div>
+            <p style="font-weight: 500; margin-bottom: 0.25rem;">Máy Chiếu</p>
+            <p style="font-size: var(--fs-sm); color: var(--text-secondary);">Mã: EQ-001</p>
+            <p style="font-size: var(--fs-sm); color: #28a745; margin-top: 0.5rem;">✓ Đã Trả (15/12/2024)</p>
+          </article>
+
+          <article style="background: #f8f9fa; padding: 1rem; border-radius: 0.25rem;">
+            <div style="aspect-ratio: 1; background: #e0e0e0; border-radius: 0.25rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: #999;">Ảnh</div>
+            <p style="font-weight: 500; margin-bottom: 0.25rem;">Laptop</p>
+            <p style="font-size: var(--fs-sm); color: var(--text-secondary);">Mã: EQ-010</p>
+            <p style="font-size: var(--fs-sm); color: #ffc107; margin-top: 0.5rem;">⏱ Đang Mượn (10/12/2024)</p>
+          </article>
+
+          <article style="background: #f8f9fa; padding: 1rem; border-radius: 0.25rem;">
+            <div style="aspect-ratio: 1; background: #e0e0e0; border-radius: 0.25rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: #999;">Ảnh</div>
+            <p style="font-weight: 500; margin-bottom: 0.25rem;">Loa Bluetooth</p>
+            <p style="font-size: var(--fs-sm); color: var(--text-secondary);">Mã: EQ-005</p>
+            <p style="font-size: var(--fs-sm); color: #28a745; margin-top: 0.5rem;">✓ Đã Trả (01/12/2024)</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section style="padding: 2rem 1rem; max-width: 90rem; margin: 0 auto;">
+      <h2 style="font-size: var(--fs-lg); font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Hành Động Nhanh</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <a href="kho.html" style="background: linear-gradient(135deg, #0088FF, #0066CC); color: white; padding: 1.5rem; text-align: center; border-radius: 0.25rem; text-decoration: none; transition: opacity 0.3s; cursor: pointer;">
+          <div style="font-weight: 700; margin-bottom: 0.5rem;">Mượn Thiết Bị</div>
+          <div style="font-size: var(--fs-sm); opacity: 0.9;">Truy cập kho thiết bị</div>
+        </a>
+        <a href="dang-ky-phong-hoc.html" style="background: linear-gradient(135deg, #0088FF, #0066CC); color: white; padding: 1.5rem; text-align: center; border-radius: 0.25rem; text-decoration: none; transition: opacity 0.3s; cursor: pointer;">
+          <div style="font-weight: 700; margin-bottom: 0.5rem;">Đăng Ký Phòng</div>
+          <div style="font-size: var(--fs-sm); opacity: 0.9;">Đặt phòng học</div>
+        </a>
+        <a href="kho-ca-nhan.html" style="background: linear-gradient(135deg, #0088FF, #0066CC); color: white; padding: 1.5rem; text-align: center; border-radius: 0.25rem; text-decoration: none; transition: opacity 0.3s; cursor: pointer;">
+          <div style="font-weight: 700; margin-bottom: 0.5rem;">Kho Cá Nhân</div>
+          <div style="font-size: var(--fs-sm); opacity: 0.9;">Xem lịch sử & trạng thái</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Copyright -->
+    <footer class="copyright" style="margin-top: 2rem;">
+      <p><strong>Copyright 2025</strong></p>
+      <p>Website này là tài sản thuộc quyền sở hữu hợp pháp của OFM.<br>
+        Nội dung, hình ảnh và mã nguồn được bảo hộ theo quy định pháp luật hiện hành.</p>
+      <p>Mọi thông chi tiết xin liên hệ<br>
+        Hotline: 0344655621</p>
+    </footer>
+
+    <!-- Note Section -->
+    <div class="footer-note">
+      <div class="footer-note-icon">
+        <img src="../image/figma/icon-idea.png" alt="Idea icon">
+      </div>
+      <div class="footer-note-text">Bạn có thể quét mã QR để mượn, trả và báo hỏng thiết bị nhanh chóng!</div>
+    </div>
+  </div>
+</body>
+</html>

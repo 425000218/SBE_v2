@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Ký - Hệ Thống Mượn/Trả Thiết Bị SEB</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .signup-container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 1rem;
+      flex: 1;
+      min-height: auto;
+    }
+
+    .signup-form {
+      background-color: var(--white);
+      padding: 2.125rem;
+      box-shadow: var(--shadow);
+      border-radius: 0.25rem;
+      width: 100%;
+      max-width: 40rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6875rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 1.125rem 0;
+      border: none;
+      border-bottom: 1px solid var(--border-color);
+      background: transparent;
+      font-size: var(--fs-md);
+      color: var(--text-secondary);
+      font-family: inherit;
+    }
+
+    .form-input::placeholder {
+      color: var(--text-secondary);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-bottom-color: var(--banner-blue);
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 5rem;
+    }
+
+    .form-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .form-checkbox input[type="checkbox"] {
+      margin-top: 0.25rem;
+      cursor: pointer;
+    }
+
+    .form-checkbox label {
+      font-size: var(--fs-sm);
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    .form-checkbox a {
+      color: var(--text-light);
+      text-decoration: none;
+    }
+
+    .form-checkbox a:hover {
+      text-decoration: underline;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .btn-primary {
+      width: 100%;
+      max-width: 16.5rem;
+      padding: 0.6875rem 1.125rem;
+    }
+
+    .form-section-title {
+      font-size: var(--fs-lg);
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 37.5rem) {
+      .signup-form {
+        padding: 1rem;
+      }
+
+      .form-input {
+        padding: 0.75rem 0;
+        font-size: var(--fs-sm);
+      }
+
+      .form-section-title {
+        font-size: var(--fs-base);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Banner -->
+    <header class="banner">
+      <div class="banner-logo">
+        <img src="../image/figma/logo.png" alt="Logo Trường">
+      </div>
+      <div class="banner-content">
+        <div class="banner-heading">TRƯỜNG TRUNG HỌC CƠ SỞ LỘC AN</div>
+        <div class="banner-subheading">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ (SEB)</div>
+      </div>
+      <div class="banner-actions">
+        <button type="button" aria-label="Login">
+          👤
+        </button>
+        <button type="button" aria-label="Edit">
+          ✏️
+        </button>
+      </div>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-title">ĐĂNG KÝ</div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="signup-container">
+      <form class="signup-form">
+        <div class="form-section-title">Thông Tin Cá Nhân</div>
+        
+        <div class="form-group">
+          <input type="text" class="form-input" placeholder="Họ và tên" required>
+        </div>
+
+        <div class="form-group">
+          <input type="email" class="form-input" placeholder="Email" required>
+        </div>
+
+        <div class="form-group">
+          <input type="tel" class="form-input" placeholder="Số điện thoại" required>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-input" placeholder="Tên đăng nhập" required>
+        </div>
+
+        <div class="form-section-title">Bảo Mật</div>
+
+        <div class="form-group">
+          <input type="password" class="form-input" placeholder="Mật khẩu" required>
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-input" placeholder="Xác nhận mật khẩu" required>
+        </div>
+
+        <div class="form-section-title">Thông Tin Thêm</div>
+
+        <div class="form-group">
+          <input type="text" class="form-input" placeholder="Lớp" required>
+        </div>
+
+        <div class="form-group">
+          <textarea class="form-input" placeholder="Ghi chú (nếu có)"></textarea>
+        </div>
+
+        <div class="form-checkbox">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">
+            Tôi đồng ý với <a href="#">điều khoản sử dụng</a>
+          </label>
+        </div>
+
+        <div class="btn-container">
+          <button type="submit" class="btn-primary">ĐĂNG KÝ</button>
+        </div>
+
+        <div style="text-align: center; margin-top: 1rem; font-size: var(--fs-sm);">
+          Đã có tài khoản? <a href="login.html" style="color: var(--text-light); text-decoration: none;">Đăng nhập</a>
+        </div>
+      </form>
+    </main>
+
+    <!-- Copyright -->
+    <footer class="copyright">
+      <p><strong>Copyright 2025</strong></p>
+      <p>Website này là tài sản thuộc quyền sở hữu hợp pháp của OFM.<br>
+        Nội dung, hình ảnh và mã nguồn được bảo hộ theo quy định pháp luật hiện hành.</p>
+      <p>Mọi thông chi tiết xin liên hệ<br>
+        Hotline: 0344655621</p>
+    </footer>
+
+    <!-- Note Section -->
+    <div class="footer-note">
+      <div class="footer-note-icon">
+        <img src="../image/figma/icon-idea.png" alt="Idea icon">
+      </div>
+      <div class="footer-note-text">Bạn có thể quét mã QR để mượn, trả và báo hỏng thiết bị nhanh chóng!</div>
+    </div>
+  </div>
+
+  <script>
+    // Handle form submission
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Đăng ký chức năng (demo)');
+    });
+  </script>
+</body>
+</html>
