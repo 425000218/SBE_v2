@@ -378,22 +378,84 @@ main.container {
 }
 
 /* ============================================================================
-   RECENT PRODUCTS GRID (CSS Grid auto-fit)
+   RECENT PRODUCTS CAROUSEL (Horizontal Scroll)
    ============================================================================ */
 
 .recent {
   padding: 0 var(--sp-md);
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: row;
   gap: 0.625rem;
-  justify-items: center;
   order: 6;
   width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--banner-blue) transparent;
+}
+
+/* Custom scrollbar for Chrome/Safari */
+.recent::-webkit-scrollbar {
+  height: 0.5rem;
+}
+
+.recent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.recent::-webkit-scrollbar-thumb {
+  background: var(--banner-blue);
+  border-radius: 0.25rem;
+}
+
+.recent::-webkit-scrollbar-thumb:hover {
+  background: #0066CC;
+}
+
+/* Carousel Controls (Nút điều hướng carousel) */
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem var(--sp-md) 0.5rem;
+  z-index: 10;
+}
+
+.carousel-btn {
+  padding: 0.5rem 1rem;
+  background-color: var(--banner-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 0.25rem;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+
+.carousel-btn:hover {
+  background-color: #0066CC;
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 136, 255, 0.3);
+}
+
+.carousel-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 136, 255, 0.2);
+}
+
+.carousel-btn--prev,
+.carousel-btn--next {
+  min-width: 8rem;
 }
 
 .recent-card {
-  width: 100%;
-  max-width: 25.9375rem;
+  min-width: 26rem;
+  min-height: fit-content;
+  flex-shrink: 0;
   background: var(--surface);
   padding: 1.3125rem 0.4375rem;
   display: grid;
@@ -642,14 +704,11 @@ footer {
   }
 
   .recent {
-    grid-template-columns: repeat(auto-fit, minmax(25.9375rem, 1fr));
-    gap: 0.625rem;
     padding: 0 1.875rem;
-    justify-items: stretch;
   }
 
   .recent-card {
-    max-width: none;
+    min-width: 25.9375rem;
   }
 
   .section-title__inner {
@@ -664,6 +723,12 @@ footer {
   .banner__name {
     font-size: 2.25rem;
     line-height: 3rem;
+  }
+
+  /* Carousel Controls Responsive */
+  .carousel-btn {
+    font-size: var(--fs-base);
+    min-width: 9rem;
   }
 }
 
@@ -690,7 +755,6 @@ footer {
   }
 
   .recent {
-    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
     padding: 0 1.875rem;
   }
 
@@ -722,7 +786,6 @@ footer {
   }
 
   .recent {
-    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
     padding: 0 1.875rem;
   }
 }
