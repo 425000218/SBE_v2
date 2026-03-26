@@ -4,7 +4,171 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Đăng Nhập - Hệ Thống Mượn/Trả Thiết Bị SEB</title>
-  <link rel="stylesheet" href="styles.css">
+  <!-- Link CSS chung từ thư mục css -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    /* Kiểu dáng cho container đăng nhập */
+    .login-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6.75rem;
+      flex: 1;
+      min-height: 26.125rem;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Hình minh họa đăng nhập */
+    .login-illustration {
+      flex: 0 0 30%;
+      max-width: 30rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Form đăng nhập */
+    .login-form {
+      flex: 0 0 40%;
+      max-width: 40rem;
+    }
+
+    .form-input-group {
+      width: 100%;
+    }
+
+    /* Nút hành động trong form */
+    .form-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin: 1rem 0;
+    }
+
+    .btn-primary {
+      width: 16.5rem;
+      padding: 0.6875rem 1.125rem;
+    }
+
+    /* Responsive: Tablet trở xuống */
+    @media (max-width: 56.25rem) {
+      .login-container {
+        flex-direction: column;
+        padding: 1rem;
+        min-height: auto;
+        gap: 1.5rem;
+      }
+
+      .login-illustration {
+        width: 100%;
+        flex: none;
+        max-width: 100%;
+      }
+
+      .login-form {
+        width: 100%;
+        flex: none;
+        max-width: 100%;
+      }
+
+      .btn-primary {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Nút trang chủ ở góc trên bên trái -->
+    <a href="../index.html" class="home-btn" title="Trang chủ">🏠</a>
+
+    <!-- Banner (phần header) -->
+    <header class="banner">
+      <div class="banner-logo">
+        <img src="../image/figma/logo.png" alt="Logo Trường">
+      </div>
+      <div class="banner-content">
+        <div class="banner-heading">TRƯỜNG TRUNG HỌC CƠ SỞ LỘC AN</div>
+        <div class="banner-subheading">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ (SEB)</div>
+      </div>
+      <div class="banner-actions">
+        <button type="button" aria-label="Login">
+          👤
+        </button>
+        <button type="button" aria-label="Edit">
+          ✏️
+        </button>
+      </div>
+    </header>
+
+    <!-- Thanh điều hướng -->
+    <nav class="navbar">
+      <div class="navbar-title">ĐĂNG NHẬP</div>
+    </nav>
+
+    <!-- Nội dung chính -->
+    <main class="login-container">
+      <!-- Phần hình minh họa -->
+      <div class="login-illustration">
+        <div style="width: 100%; aspect-ratio: 1; background: linear-gradient(135deg, #E4F5F9, #B8E4F0); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #0088FF;">
+          Illustration
+        </div>
+      </div>
+
+      <!-- Form đăng nhập -->
+      <form class="form-container login-form">
+        <!-- Trường email/tên tài khoản -->
+        <div class="form-group">
+          <input type="email" class="form-input" placeholder="Tên đăng nhập/Email" required>
+        </div>
+
+        <!-- Trường mật khẩu -->
+        <div class="form-group">
+          <input type="password" class="form-input" placeholder="Nhập mật khẩu" required>
+        </div>
+
+        <!-- Liên kết quên mật khẩu và đăng ký -->
+        <div class="form-actions">
+          <a href="#forgot-password">Quên mật khẩu</a>
+          <a href="signup.html">Đăng ký</a>
+        </div>
+
+        <!-- Nút gửi form -->
+        <div style="display: flex; justify-content: center;">
+          <button type="submit" class="btn-primary">ĐĂNG NHẬP</button>
+        </div>
+      </form>
+    </main>
+
+    <!-- Phần copyright -->
+    <footer class="copyright">
+      <p><strong>Copyright 2025</strong></p>
+      <p>Website này là tài sản thuộc quyền sở hữu hợp pháp của OFM.<br>
+        Nội dung, hình ảnh và mã nguồn được bảo hộ theo quy định pháp luật hiện hành.</p>
+      <p>Mọi thông chi tiết xin liên hệ<br>
+        Hotline: 0344655621</p>
+    </footer>
+
+    <!-- Ghi chú (note section) -->
+    <div class="footer-note">
+      <div class="footer-note-icon">
+        <img src="../image/figma/icon-idea.png" alt="Idea icon">
+      </div>
+      <div class="footer-note-text">Bạn có thể quét mã QR để mượn, trả và báo hỏng thiết bị nhanh chóng!</div>
+    </div>
+  </div>
+
+  <script>
+    // Xử lý phát sự kiện gửi form
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Đăng nhập chức năng (demo)');
+    });
+  </script>
+</body>
+</html>
   <style>
     .login-container {
       display: flex;
