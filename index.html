@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEB - Trang chủ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <main class="container">
+        <header class="banner" aria-label="Banner">
+            <div class="banner__logo" aria-hidden="true">
+                <img src="image/figma/logo.png" alt="">
+            </div>
+
+            <div class="banner__titles">
+                <p class="banner__school">TRƯỜNG TRUNG HỌC CƠ SỞ LỘC AN</p>
+                <p class="banner__name">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ ( SEB)</p>
+            </div>
+
+            <div class="banner__actions" aria-label="Hành động">
+                <button class="banner__action" type="button" aria-label="Đăng nhập">
+                    <span class="icon icon--user" aria-hidden="true">
+                        <img class="icon__v" src="image/figma/v9.svg" alt="">
+                        <img class="icon__v" src="image/figma/v10.svg" alt="">
+                    </span>
+                </button>
+                <button class="banner__action" type="button" aria-label="Tùy chỉnh">
+                    <span class="icon icon--brush" aria-hidden="true">
+                        <img class="icon__v" src="image/figma/v7.svg" alt="">
+                        <img class="icon__v" src="image/figma/v8.svg" alt="">
+                    </span>
+                </button>
+            </div>
+        </header>
+
+        <nav class="navbar" aria-label="Điều hướng">
+            <div class="navbar__tabs">
+                <a class="tab tab--active" href="#" data-tab="home">Trang chủ</a>
+                <a class="tab" href="#" data-tab="inventory">Kho thiết bị</a>
+                <a class="tab" href="#" data-tab="rooms">Đăng ký phòng học</a>
+                <a class="tab" href="#" data-tab="personal">Kho các nhân</a>
+                <a class="tab" href="#" data-tab="news">Tin tức</a>
+                <a class="tab" href="#" data-tab="contact">Liên hệ</a>
+            </div>
+        </nav>
+
+        <form class="search" data-search-form action="#" role="search" aria-label="Tìm kiếm thiết bị">
+            <div class="search__left" aria-hidden="true">
+                <span class="icon icon--search" aria-hidden="true">
+                    <img class="icon__v" src="image/figma/v5.svg" alt="">
+                    <img class="icon__v" src="image/figma/v6.svg" alt="">
+                </span>
+            </div>
+            <input class="search__input" data-search-input type="search" name="q" placeholder="Tìm kiếm thiết bị" aria-label="Tìm kiếm thiết bị" />
+            <div class="search__actions" aria-label="Tác vụ">
+                <button class="search__btn" type="button" aria-label="Chụp ảnh">
+                    <span class="icon icon--camera" aria-hidden="true">
+                        <img class="icon__v" src="image/figma/v2.svg" alt="">
+                        <img class="icon__v" src="image/figma/v3.svg" alt="">
+                        <img class="icon__v" src="image/figma/v4.svg" alt="">
+                    </span>
+                </button>
+                <button class="search__btn" type="button" aria-label="Micro">
+                    <span class="icon icon--mic" aria-hidden="true">
+                        <img class="icon__v" src="image/figma/v0.svg" alt="">
+                        <img class="icon__v" src="image/figma/v1.svg" alt="">
+                    </span>
+                </button>
+            </div>
+        </form>
+
+        <section class="stats" aria-label="Thống kê">
+            <div class="stats__grid">
+                <div class="stat-card">
+                    <p class="stat-card__label">THIẾT BỊ HIỆN CÓ</p>
+                    <p class="stat-card__value">2,580</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-card__label">BẢO TRÌ</p>
+                    <p class="stat-card__value">3</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-card__label">ĐÃ MƯỢN</p>
+                    <p class="stat-card__value">18</p>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Thiết bị mượn gần đây">
+            <div class="section-title">
+                <div class="section-title__inner">
+                    <span class="icon icon--clock icon--30" aria-hidden="true">
+                        <img class="icon__v" src="image/figma/v11.svg" alt="">
+                        <img class="icon__v" src="image/figma/v12.svg" alt="">
+                        <img class="icon__v" src="image/figma/v13.svg" alt="">
+                    </span>
+                    <p class="section-title__text">Thiết bị mượn gần đây</p>
+                </div>
+            </div>
+
+            <div class="recent" aria-label="Danh sách thiết bị mượn gần đây">
+                <article class="recent-card">
+                    <div class="recent-card__img"><img src="image/figma/recent-1.png" alt="CÂN SHIMADZU B322"></div>
+                    <div class="recent-card__meta">
+                        <div class="recent-card__titleWrap"><p class="recent-card__title">CÂN SHIMADZU B322</p></div>
+                        <div class="recent-card__timeWrap"><p class="recent-card__time">1 giờ trước</p></div>
+                    </div>
+                </article>
+                <article class="recent-card">
+                    <div class="recent-card__img"><img src="image/figma/recent-2.png" alt="NHIỆT KẾ 100 ĐỘ"></div>
+                    <div class="recent-card__meta">
+                        <div class="recent-card__titleWrap"><p class="recent-card__title">NHIỆT KẾ 100 ĐỘ</p></div>
+                        <div class="recent-card__timeWrap"><p class="recent-card__time">1 giờ trước</p></div>
+                    </div>
+                </article>
+                <article class="recent-card">
+                    <div class="recent-card__img"><img src="image/figma/recent-3.png" alt="THƯỚC ĐO ĐỘ"></div>
+                    <div class="recent-card__meta">
+                        <div class="recent-card__titleWrap"><p class="recent-card__title">THƯỚC ĐO ĐỘ</p></div>
+                        <div class="recent-card__timeWrap"><p class="recent-card__time">2 giờ trước</p></div>
+                    </div>
+                </article>
+
+                <article class="recent-card">
+                    <div class="recent-card__img"><img src="image/figma/recent-4.png" alt="LAPTOP DELL XPS 2021"></div>
+                    <div class="recent-card__meta">
+                        <div class="recent-card__titleWrap"><p class="recent-card__title">LAPTOP DELL XPS 2021</p></div>
+                        <div class="recent-card__timeWrap"><p class="recent-card__time">2 giờ trước</p></div>
+                    </div>
+                </article>
+                <article class="recent-card">
+                    <div class="recent-card__img"><img src="image/figma/recent-5.png" alt="MÀN HÌNH DELL S2423"></div>
+                    <div class="recent-card__meta">
+                        <div class="recent-card__titleWrap"><p class="recent-card__title">MÀN HÌNH DELL S2423</p></div>
+                        <div class="recent-card__timeWrap"><p class="recent-card__time">3 giờ trước</p></div>
+                    </div>
+                </article>
+                <article class="recent-card">
+                    <div class="recent-card__img"><img src="image/figma/recent-6.png" alt="BỘ LỰC KẾ"></div>
+                    <div class="recent-card__meta">
+                        <div class="recent-card__titleWrap"><p class="recent-card__title">BỘ LỰC KẾ</p></div>
+                        <div class="recent-card__timeWrap"><p class="recent-card__time">5 giờ trước</p></div>
+                    </div>
+                </article>
+
+                <article class="recent-card">
+                    <div class="recent-card__img"><img src="image/figma/recent-7.png" alt="BẢNG DEMO MẪU KIM LOẠI"></div>
+                    <div class="recent-card__meta">
+                        <div class="recent-card__titleWrap"><p class="recent-card__title">BẢNG DEMO MẪU KIM LOẠI</p></div>
+                        <div class="recent-card__timeWrap"><p class="recent-card__time">1 ngày trước</p></div>
+                    </div>
+                </article>
+                <article class="recent-card">
+                    <div class="recent-card__img"><img src="image/figma/recent-8.png" alt="ĐỊA CẦU ĐỂ BÀN"></div>
+                    <div class="recent-card__meta">
+                        <div class="recent-card__titleWrap"><p class="recent-card__title">ĐỊA CẦU ĐỂ BÀN</p></div>
+                        <div class="recent-card__timeWrap"><p class="recent-card__time">1 ngày trước</p></div>
+                    </div>
+                </article>
+                <article class="recent-card">
+                    <div class="recent-card__img"><img src="image/figma/recent-9.png" alt="MÔ PHỎNG RNA"></div>
+                    <div class="recent-card__meta">
+                        <div class="recent-card__titleWrap"><p class="recent-card__title">MÔ PHỎNG RNA</p></div>
+                        <div class="recent-card__timeWrap"><p class="recent-card__time">1 ngày trước</p></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="maint" aria-label="Thông tin bảo trì/cập nhật">
+            <div class="section-title">
+                <div class="section-title__inner">
+                    <span class="icon icon--repair icon--30" aria-hidden="true">
+                        <img class="icon__v" src="image/figma/v14.svg" alt="">
+                        <img class="icon__v" src="image/figma/v15.svg" alt="">
+                        <img class="icon__v" src="image/figma/v16.svg" alt="">
+                        <img class="icon__v" src="image/figma/v17.svg" alt="">
+                    </span>
+                    <p class="section-title__text">Thông tin bảo trì/cập nhật</p>
+                </div>
+            </div>
+
+            <div class="maint__list" role="list">
+                <div class="maint-item" role="listitem">
+                    <span class="icon icon--brush" aria-hidden="true">
+                        <img class="icon__v" src="image/figma/v7.svg" alt="">
+                        <img class="icon__v" src="image/figma/v8.svg" alt="">
+                    </span>
+                    <p class="maint-item__text">Phòng máy PM102 bảo trì định kỳ 20/12/2025</p>
+                </div>
+                <div class="maint-item" role="listitem">
+                    <span class="icon icon--brush" aria-hidden="true">
+                        <img class="icon__v" src="image/figma/v7.svg" alt="">
+                        <img class="icon__v" src="image/figma/v8.svg" alt="">
+                    </span>
+                    <p class="maint-item__text">Bổ sung máy chiếu cho phòng hội nghị HN108</p>
+                </div>
+                <div class="maint-item" role="listitem">
+                    <span class="icon icon--brush" aria-hidden="true">
+                        <img class="icon__v" src="image/figma/v7.svg" alt="">
+                        <img class="icon__v" src="image/figma/v8.svg" alt="">
+                    </span>
+                    <p class="maint-item__text">Hoàn thành sửa chữa tivi phòng học PH305</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer" aria-label="Bản quyền">
+                <p>Copyright 2025</p>
+                <div class="footer__block">
+                    <p>Website này là tài sản thuộc quyền sở hữu hợp pháp của OFM.</p>
+                    <p>Nội dung, hình ảnh và mã nguồn được bảo hộ theo quy định pháp luật hiện hành.</p>
+                </div>
+                <div class="footer__block">
+                    <p>Mọi thông chi tiết xin liên hệ</p>
+                    <p>Hotline: 0344655621</p>
+                </div>
+            </div>
+
+            <div class="note" aria-label="Ghi chú">
+                <img class="note__icon" src="image/figma/icon-idea.png" alt="" aria-hidden="true">
+                <p class="note__text">Bạn có thể quét mã QR để mượn, trả và báo hỏng thiết bị nhanh chóng !</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>
