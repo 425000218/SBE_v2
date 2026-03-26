@@ -43,3 +43,7 @@ hãy note lại các câu promt của tôi đã hỏi vào 1 file .txt trong pro
 [2026-03-26 21:54:46]
 Hãy viết CSS cho Layout này theo phong cách Mobile First, sử dụng đơn vị rem thay vì px. Ưu tiên dùng CSS Grid auto-fit cho danh sách sản phẩm và đảm bảo không sử dụng float hay position tuyệt đối cho bố cục chính
 ---
+
+[2026-03-26 23:45:30]
+đưa trang home lên làm trang index, link các trang lại với nhau qua trang index, thiết lập button home ở mỗi trang góc trên bên trái, file css trong folder pages gộp chung với file css trong thư mục css, comment các dòng code bằng tiếng việt
+---
