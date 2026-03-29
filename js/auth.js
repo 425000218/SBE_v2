@@ -42,8 +42,10 @@
     localStorage.setItem(
       AUTH_KEY,
       JSON.stringify({
+        userId: userInfo.userId || '',
         email: userInfo.email,
         name: userInfo.name || "Người dùng SEB",
+        role: userInfo.role || 'student',
         loggedAt: new Date().toISOString(),
       })
     );

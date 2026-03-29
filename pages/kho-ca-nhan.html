@@ -385,8 +385,78 @@
   </div>
 
   <script src="../js/auth.js" defer></script>
+  <script src="../js/api-config.js" defer></script>
+  <script src="../js/seb-api.js" defer></script>
   <script src="../js/main.js" defer></script>
   <script>
+    function getAuthUser() {
+      try {
+        const raw = localStorage.getItem('seb_auth_user');
+        return raw ? JSON.parse(raw) : null;
+      } catch (_) {
+        return null;
+      }
+    }
+
+    function renderBorrowRows(rows) {
+      const tbody = document.querySelector('#all tbody');
+      if (!tbody) return;
+
+      tbody.innerHTML = '';
+      rows.forEach((r) => {
+        const tr = document.createElement('tr');
+        const isBorrowed = String(r.status).toLowerCase() === 'borrowed';
+        const statusClass = isBorrowed ? 'status-borrowed' : 'status-returned';
+        const statusText = isBorrowed ? 'Đang Mượn' : 'Đã Trả';
+        const actionText = isBorrowed ? 'Trả' : 'Chi Tiết';
+
+        tr.innerHTML = `
+          <td>${r.device_name || ''}</td>
+          <td>${r.device_code || ''}</td>
+          <td>${r.borrowed_at ? new Date(r.borrowed_at).toLocaleDateString('vi-VN') : ''}</td>
+          <td>${r.due_at ? new Date(r.due_at).toLocaleDateString('vi-VN') : ''}</td>
+          <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+          <td><button class="btn-action" data-action="${actionText}" data-tx-id="${r.transaction_id || ''}">${actionText}</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      tbody.querySelectorAll('.btn-action[data-action="Trả"]').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const txId = btn.getAttribute('data-tx-id');
+          if (!txId) return;
+
+          if (window.SEBApi && window.SEBApi.isConfigured()) {
+            try {
+              await window.SEBApi.returnDevice(txId);
+              alert('Trả thiết bị thành công (API).');
+              window.location.reload();
+              return;
+            } catch (err) {
+              alert('Trả thiết bị thất bại: ' + (err.message || 'unknown_error'));
+              return;
+            }
+          }
+
+          alert('Chức năng trả thiết bị ở chế độ demo.');
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const authUser = getAuthUser();
+      if (!authUser || !authUser.userId) return;
+
+      if (window.SEBApi && window.SEBApi.isConfigured()) {
+        try {
+          const rows = await window.SEBApi.listMyBorrows(authUser.userId);
+          renderBorrowRows(rows || []);
+        } catch (err) {
+          console.error('API listMyBorrows failed:', err);
+        }
+      }
+    });
+
     function switchTab(element, tabName) {
       // Update tab active state
       document.querySelectorAll('.history-tab').forEach(tab => tab.classList.remove('active'));

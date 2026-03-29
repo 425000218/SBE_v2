@@ -134,7 +134,7 @@
         </div>
 
         <p id="loginError" class="login-error" hidden></p>
-        <p class="login-hint">Tài khoản demo: user@school.edu / 123456</p>
+        <p class="login-hint">Tài khoản demo: user@lachong.edu.vn / 123456</p>
 
         <div style="display: flex; justify-content: center;">
           <button type="submit" class="btn-primary">ĐĂNG NHẬP</button>
@@ -159,6 +159,8 @@
   </div>
 
   <script src="../js/auth.js" defer></script>
+  <script src="../js/api-config.js" defer></script>
+  <script src="../js/seb-api.js" defer></script>
   <script src="../js/main.js" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -169,11 +171,34 @@
 
       if (!form) return;
 
-      form.addEventListener("submit", (e) => {
+      form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const email = emailInput.value.trim().toLowerCase();
         const password = passwordInput.value.trim();
+
+        errorText.hidden = true;
+        errorText.textContent = "";
+
+        if (window.SEBApi && window.SEBApi.isConfigured()) {
+          try {
+            const user = await window.SEBApi.login(email, password);
+            if (window.SEBAuth && typeof window.SEBAuth.login === "function") {
+              window.SEBAuth.login({
+                email: user.email,
+                name: user.full_name || "Người dùng SEB",
+                userId: user.user_id,
+                role: user.role,
+              });
+            }
+            window.location.href = "kho-ca-nhan.html";
+            return;
+          } catch (err) {
+            errorText.hidden = false;
+            errorText.textContent = "Đăng nhập thất bại từ API. Kiểm tra tài khoản hoặc cấu hình API.";
+            return;
+          }
+        }
 
         const demoUser = "user@school.edu";
         const demoPass = "123456";

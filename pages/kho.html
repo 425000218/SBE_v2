@@ -355,13 +355,56 @@
   </div>
 
   <script src="../js/auth.js" defer></script>
+  <script src="../js/api-config.js" defer></script>
+  <script src="../js/seb-api.js" defer></script>
   <script src="../js/main.js" defer></script>
   <script>
-    // Handle product card clicks
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const productName = card.querySelector('.product-name').textContent;
-        alert(`Chi tiết sản phẩm: ${productName} (demo)`);
+    function renderProductsFromApi(devices) {
+      const productsRoot = document.querySelector('.products');
+      if (!productsRoot) return;
+
+      productsRoot.innerHTML = '';
+      devices.forEach((d) => {
+        const card = document.createElement('article');
+        card.className = 'product-card';
+
+        const isAvailable = String(d.status || '').toLowerCase() === 'available';
+        const statusClass = isAvailable ? 'status-available' : 'status-unavailable';
+        const statusText = isAvailable ? 'Sẵn có' : (d.status || 'Không khả dụng');
+
+        card.innerHTML = `
+          <img src="${d.image_url || '../image/figma/recent-1.png'}" alt="${d.device_name || 'Thiết bị'}" class="product-image">
+          <div class="product-info">
+            <div class="product-name">${d.device_name || 'Thiết bị'}</div>
+            <div class="product-code">MÃ: ${d.device_code || d.device_id || 'N/A'}</div>
+            <span class="product-status ${statusClass}">${statusText}</span>
+          </div>
+        `;
+
+        card.addEventListener('click', () => {
+          alert(`Chi tiết sản phẩm: ${d.device_name || 'Thiết bị'} (API)`);
+        });
+
+        productsRoot.appendChild(card);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (window.SEBApi && window.SEBApi.isConfigured()) {
+        try {
+          const devices = await window.SEBApi.listDevices();
+          renderProductsFromApi(devices);
+        } catch (err) {
+          console.error('API listDevices failed:', err);
+        }
+      }
+
+      // Handle product card clicks (fallback/static)
+      document.querySelectorAll('.product-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const productName = card.querySelector('.product-name').textContent;
+          alert(`Chi tiết sản phẩm: ${productName} (demo)`);
+        });
       });
     });
 

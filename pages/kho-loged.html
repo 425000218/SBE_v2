@@ -368,24 +368,92 @@
   </div>
 
   <script src="../js/auth.js" defer></script>
+  <script src="../js/api-config.js" defer></script>
+  <script src="../js/seb-api.js" defer></script>
   <script src="../js/main.js" defer></script>
   <script>
-    // Handle product card clicks
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const productName = card.querySelector('.product-name').textContent;
-        alert(`Chi tiết sản phẩm: ${productName} (demo)`);
-      });
-    });
+    function getAuthUserId() {
+      try {
+        const raw = localStorage.getItem('seb_auth_user');
+        if (!raw) return '';
+        const parsed = JSON.parse(raw);
+        return parsed.userId || '';
+      } catch (_) {
+        return '';
+      }
+    }
 
-    // Handle borrow button
-    document.querySelectorAll('.product-action').forEach(btn => {
-      if (!btn.disabled) {
-        btn.addEventListener('click', (e) => {
+    function bindCardEvents() {
+      document.querySelectorAll('.product-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const productName = card.querySelector('.product-name').textContent;
+          alert(`Chi tiết sản phẩm: ${productName}`);
+        });
+      });
+
+      document.querySelectorAll('.product-action').forEach(btn => {
+        if (btn.disabled) return;
+        btn.addEventListener('click', async (e) => {
           e.stopPropagation();
+
+          const card = btn.closest('.product-card');
+          const deviceId = card ? card.getAttribute('data-device-id') : '';
+          const userId = getAuthUserId();
+
+          if (window.SEBApi && window.SEBApi.isConfigured() && deviceId && userId) {
+            try {
+              await window.SEBApi.borrowDevice(userId, deviceId, '');
+              alert('Mượn thiết bị thành công (API).');
+              window.location.reload();
+              return;
+            } catch (err) {
+              alert('Mượn thất bại từ API: ' + (err.message || 'unknown_error'));
+              return;
+            }
+          }
+
           alert('Yêu cầu mượn đã được gửi (demo)');
         });
+      });
+    }
+
+    function renderProducts(devices) {
+      const root = document.querySelector('.products');
+      if (!root) return;
+
+      root.innerHTML = '';
+      devices.forEach((d) => {
+        const available = String(d.status || '').toLowerCase() === 'available';
+        const card = document.createElement('article');
+        card.className = 'product-card';
+        card.setAttribute('data-device-id', d.device_id || '');
+
+        card.innerHTML = `
+          <img src="${d.image_url || '../image/figma/recent-1.png'}" alt="${d.device_name || 'Thiết bị'}" class="product-image">
+          <div class="product-info">
+            <div class="product-name">${d.device_name || 'Thiết bị'}</div>
+            <div class="product-code">MÃ: ${d.device_code || d.device_id || 'N/A'}</div>
+            <span class="product-status ${available ? 'status-available' : 'status-unavailable'}">${available ? 'Sẵn có' : (d.status || 'Không khả dụng')}</span>
+            <button class="product-action" ${available ? '' : 'disabled'}>${available ? 'MƯỢN' : 'KHÔNG SẴN'}</button>
+          </div>
+        `;
+        root.appendChild(card);
+      });
+      bindCardEvents();
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (window.SEBApi && window.SEBApi.isConfigured()) {
+        try {
+          const devices = await window.SEBApi.listDevices();
+          renderProducts(devices);
+          return;
+        } catch (err) {
+          console.error('API listDevices failed:', err);
+        }
       }
+
+      bindCardEvents();
     });
   </script>
 </body>
