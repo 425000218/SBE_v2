@@ -1,0 +1,75 @@
+    <header class="banner" aria-label="Banner">
+      <div class="banner__logo" aria-hidden="true">
+        <img src="../image/figma/logo.png" alt="Logo Trường">
+      </div>
+
+      <div class="banner__titles">
+        <p class="banner__school">TRƯỜNG TRUNG HỌC CƠ SỞ LỘC AN</p>
+        <p class="banner__name">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ ( SEB)</p>
+      </div>
+
+      <div class="banner__actions" aria-label="Hành động">
+        <a href="login.html" class="banner__action" type="button" aria-label="Đăng nhập">
+          <span class="icon icon--user" aria-hidden="true">
+            <img class="icon__v" src="../image/figma/v9.svg" alt="">
+            <img class="icon__v" src="../image/figma/v10.svg" alt="">
+          </span>
+        </a>
+        <button class="banner__action" type="button" aria-label="Tùy chỉnh">
+          <span class="icon icon--brush" aria-hidden="true">
+            <img class="icon__v" src="../image/figma/v7.svg" alt="">
+            <img class="icon__v" src="../image/figma/v8.svg" alt="">
+          </span>
+        </button>
+      </div>
+    </header>
+
+  === LOCKED FIGMA HEADER/NAV TABLE ===
+  Frame 390
+  - Banner min-height: 6rem
+  - Banner padding: 0.625rem 0.875rem
+  - Banner gap: 0.625rem
+  - Logo size: 4.5rem
+  - School font-size: 0.875rem
+  - Name font-size: 1.25rem
+  - Action button: hidden
+  - Tab padding: 0.875rem 1rem
+  - Tab font-size: 0.95rem
+
+  Frame 768
+  - Banner min-height: 7.25rem
+  - Banner padding: 0.75rem 1.5rem
+  - Banner gap: 1.25rem
+  - Logo size: 5.75rem
+  - School font-size: 1.125rem
+  - Name font-size: 1.75rem
+  - Action button: 4.25rem x 3.25rem
+  - Tab padding: 0.875rem 1.125rem
+  - Tab font-size: 0.95rem
+
+  Frame 1024
+  - Banner min-height: 7.75rem
+  - Banner padding: 0.875rem 2rem
+  - Banner gap: 1.5rem
+  - Logo size: 6.375rem
+  - School font-size: 1.375rem
+  - Name font-size: 2.05rem
+  - Action button: 4.5rem x 3.375rem
+  - Tab padding: 0.9375rem 1.375rem
+  - Tab font-size: 1rem
+
+  Frame 1440
+  - Banner min-height: 8.5rem
+  - Banner padding: 1rem 2.25rem
+  - Banner gap: 1.75rem
+  - Logo size: 7rem
+  - School font-size: 1.5rem
+  - Name font-size: 2.25rem
+  - Action button: 4.75rem x 3.5rem
+  - Tab padding: 0.9375rem 1.5rem
+  - Tab font-size: 1rem
+
+  Usage rule for new pages
+  - Keep the same banner HTML structure.
+  - Include css/styles.css only; do not redefine .banner/.navbar/.tab sizes in page-level <style>.
+  - If a page needs custom tabs, use a unique class (example: .history-tab), never .tab.

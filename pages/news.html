@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tin tức - Hệ Thống Mượn/Trả Thiết Bị SEB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <a href="../index.html" class="home-btn" title="Trang chủ">🏠</a>
+  <header class="banner" aria-label="Banner">
+    <div class="banner__logo" aria-hidden="true">
+      <img src="../image/figma/logo.png" alt="Logo Trường">
+    </div>
+    <div class="banner__titles">
+      <p class="banner__school">TRƯỜNG TRUNG HỌC CƠ SỞ LỘC AN</p>
+      <p class="banner__name">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ ( SEB)</p>
+    </div>
+    <div class="banner__actions" aria-label="Hành động">
+      <a href="login.html" class="banner__action" type="button" aria-label="Đăng nhập">
+        <span class="icon icon--user" aria-hidden="true">
+          <img class="icon__v" src="../image/figma/v9.svg" alt="">
+          <img class="icon__v" src="../image/figma/v10.svg" alt="">
+        </span>
+      </a>
+      <button class="banner__action" type="button" aria-label="Tùy chỉnh">
+        <span class="icon icon--brush" aria-hidden="true">
+          <img class="icon__v" src="../image/figma/v7.svg" alt="">
+          <img class="icon__v" src="../image/figma/v8.svg" alt="">
+        </span>
+      </button>
+    </div>
+  </header>
+  <nav class="navbar">
+    <button class="navbar__toggle" aria-label="Menu" type="button">☰ Menu</button>
+    <div class="navbar__tabs">
+      <a class="tab" href="../index.html" data-tab="home">Trang chủ</a>
+      <a class="tab" href="kho.html" data-tab="inventory">Kho thiết bị</a>
+      <a class="tab" href="dang-ky-phong-hoc.html" data-tab="rooms">Đăng ký phòng học</a>
+      <a class="tab" href="kho-ca-nhan.html" data-tab="personal">Kho cá nhân</a>
+      <a class="tab tab--active" href="news.html" data-tab="news">Tin tức</a>
+      <a class="tab" href="contact.html" data-tab="contact">Liên hệ</a>
+    </div>
+  </nav>
+  <main style="max-width: 900px; margin: 2rem auto; background: #fff; border-radius: 0.5rem; box-shadow: 0 2px 8px #0001; padding: 2rem;">
+    <h1 style="text-align:center; color: var(--banner-blue);">Tin tức mới nhất</h1>
+    <article style="margin-bottom:2rem;">
+      <h2>🎉 Hệ thống SEB chính thức ra mắt!</h2>
+      <p>Ngày 01/04/2026, hệ thống mượn/trả thiết bị SEB đã chính thức đi vào hoạt động, giúp giáo viên và học sinh quản lý thiết bị dễ dàng hơn.</p>
+    </article>
+    <article style="margin-bottom:2rem;">
+      <h2>🛠️ Bảo trì định kỳ phòng máy PM102</h2>
+      <p>Phòng máy PM102 sẽ được bảo trì vào ngày 20/12/2025. Vui lòng không đăng ký sử dụng phòng trong thời gian này.</p>
+    </article>
+    <article>
+      <h2>📢 Thông báo bổ sung thiết bị mới</h2>
+      <p>Trường vừa bổ sung thêm 10 laptop Dell XPS 2021 và 5 máy chiếu Epson cho phòng học đa năng.</p>
+    </article>
+  </main>
+  <footer class="copyright" style="margin-top: 2rem;">
+    <p><strong>Copyright 2025</strong></p>
+    <p>Website này là tài sản thuộc quyền sở hữu hợp pháp của OFM.<br>Nội dung, hình ảnh và mã nguồn được bảo hộ theo quy định pháp luật hiện hành.</p>
+    <p>Mọi thông chi tiết xin liên hệ<br>Hotline: 0344655621</p>
+  </footer>
+  <div class="footer-note">
+    <div class="footer-note-icon">
+      <img src="../image/figma/icon-idea.png" alt="Idea icon">
+    </div>
+    <div class="footer-note-text">Bạn có thể quét mã QR để mượn, trả và báo hỏng thiết bị nhanh chóng!</div>
+  </div>
+  <script src="../js/auth.js" defer></script>
+  <script src="../js/main.js" defer></script>
+</body>
+</html>
+

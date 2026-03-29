@@ -1,9 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Đăng Ký - Hệ Thống Mượn/Trả Thiết Bị SEB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <!-- Link CSS chung từ thư mục css -->
   <link rel="stylesheet" href="../css/styles.css">
   <style>
@@ -121,27 +124,37 @@
     <!-- Nút trang chủ ở góc trên bên trái -->
     <a href="../index.html" class="home-btn" title="Trang chủ">🏠</a>
 
-    <!-- Banner (phần header) -->
-    <header class="banner">
-      <div class="banner-logo">
+    <!-- Banner (pháº§n header) -->
+
+        <header class="banner" aria-label="Banner">
+      <div class="banner__logo" aria-hidden="true">
         <img src="../image/figma/logo.png" alt="Logo Trường">
       </div>
-      <div class="banner-content">
-        <div class="banner-heading">TRƯỜNG TRUNG HỌC CƠ SỞ LỘC AN</div>
-        <div class="banner-subheading">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ (SEB)</div>
+
+      <div class="banner__titles">
+        <p class="banner__school">TRƯỜNG TRUNG HỌC CƠ SỞ LỘC AN</p>
+        <p class="banner__name">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ ( SEB)</p>
       </div>
-      <div class="banner-actions">
-        <a href="login.html" class="banner-action" aria-label="Đăng nhập">
-          👤
+
+      <div class="banner__actions" aria-label="Hành động">
+        <a href="login.html" class="banner__action" type="button" aria-label="Đăng nhập">
+          <span class="icon icon--user" aria-hidden="true">
+            <img class="icon__v" src="../image/figma/v9.svg" alt="">
+            <img class="icon__v" src="../image/figma/v10.svg" alt="">
+          </span>
         </a>
-        <button type="button" aria-label="Chỉnh sửa">
-          ✏️
+        <button class="banner__action" type="button" aria-label="Tùy chỉnh">
+          <span class="icon icon--brush" aria-hidden="true">
+            <img class="icon__v" src="../image/figma/v7.svg" alt="">
+            <img class="icon__v" src="../image/figma/v8.svg" alt="">
+          </span>
         </button>
       </div>
     </header>
 
     <!-- Thanh điều hướng -->
     <nav class="navbar">
+      <button class="navbar__toggle" aria-label="Menu" type="button">☰ Menu</button>
       <div class="navbar__tabs">
         <a class="tab" href="../index.html" data-tab="home">Trang chủ</a>
         <a class="tab" href="kho.html" data-tab="inventory">Kho thiết bị</a>
@@ -227,6 +240,8 @@
     </div>
   </div>
 
+  <script src="../js/auth.js" defer></script>
+  <script src="../js/main.js" defer></script>
   <script>
     // Handle form submission
     document.querySelector('form').addEventListener('submit', (e) => {
@@ -236,3 +251,5 @@
   </script>
 </body>
 </html>
+
+

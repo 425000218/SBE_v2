@@ -1,0 +1,97 @@
+<!--
+HEADER-NAV COMPONENT SNIPPET (LOCKED)
+
+CHECKLIST (5 dòng)
+1. Giữ nguyên class: banner, banner__logo, banner__titles, banner__actions, navbar, navbar__toggle, navbar__tabs, tab.
+2. Không khai báo CSS ghi đè kích thước cho banner/navbar/tab ở file trang.
+3. Dùng đúng đường dẫn ảnh/logo theo cấp thư mục (root: image/... | pages: ../image/...).
+4. Luôn include js/auth.js trước js/main.js để đồng bộ login/logout và active tab.
+5. Nếu có tab nội bộ riêng, dùng class khác (vd: history-tab), không dùng class tab.
+-->
+
+<!-- ===================== VERSION A: ROOT PAGE (vd: index.html) ===================== -->
+<header class="banner" aria-label="Banner">
+  <div class="banner__logo" aria-hidden="true">
+    <img src="image/figma/logo.png" alt="Logo Trường">
+  </div>
+
+  <div class="banner__titles">
+    <p class="banner__school">TRƯỜNG TRUNG HỌC CƠ SỞ LỘC AN</p>
+    <p class="banner__name">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ ( SEB)</p>
+  </div>
+
+  <div class="banner__actions" aria-label="Hành động">
+    <a href="pages/login.html" class="banner__action" type="button" aria-label="Đăng nhập">
+      <span class="icon icon--user" aria-hidden="true">
+        <img class="icon__v" src="image/figma/v9.svg" alt="">
+        <img class="icon__v" src="image/figma/v10.svg" alt="">
+      </span>
+    </a>
+    <button class="banner__action" type="button" aria-label="Tùy chỉnh">
+      <span class="icon icon--brush" aria-hidden="true">
+        <img class="icon__v" src="image/figma/v7.svg" alt="">
+        <img class="icon__v" src="image/figma/v8.svg" alt="">
+      </span>
+    </button>
+  </div>
+</header>
+
+<nav class="navbar" aria-label="Điều hướng">
+  <button class="navbar__toggle" aria-label="Menu" type="button">☰ Menu</button>
+  <div class="navbar__tabs">
+    <a class="tab" href="index.html" data-tab="home">Trang chủ</a>
+    <a class="tab" href="pages/kho.html" data-tab="inventory">Kho thiết bị</a>
+    <a class="tab" href="pages/dang-ky-phong-hoc.html" data-tab="rooms">Đăng ký phòng học</a>
+    <a class="tab" href="pages/kho-ca-nhan.html" data-tab="personal">Kho cá nhân</a>
+    <a class="tab" href="pages/news.html" data-tab="news">Tin tức</a>
+    <a class="tab" href="pages/contact.html" data-tab="contact">Liên hệ</a>
+  </div>
+</nav>
+
+<!-- include ở cuối body -->
+<script src="js/auth.js" defer></script>
+<script src="js/main.js" defer></script>
+
+
+<!-- ===================== VERSION B: SUB PAGE (vd: pages/*.html) ===================== -->
+<header class="banner" aria-label="Banner">
+  <div class="banner__logo" aria-hidden="true">
+    <img src="../image/figma/logo.png" alt="Logo Trường">
+  </div>
+
+  <div class="banner__titles">
+    <p class="banner__school">TRƯỜNG TRUNG HỌC CƠ SỞ LỘC AN</p>
+    <p class="banner__name">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ ( SEB)</p>
+  </div>
+
+  <div class="banner__actions" aria-label="Hành động">
+    <a href="login.html" class="banner__action" type="button" aria-label="Đăng nhập">
+      <span class="icon icon--user" aria-hidden="true">
+        <img class="icon__v" src="../image/figma/v9.svg" alt="">
+        <img class="icon__v" src="../image/figma/v10.svg" alt="">
+      </span>
+    </a>
+    <button class="banner__action" type="button" aria-label="Tùy chỉnh">
+      <span class="icon icon--brush" aria-hidden="true">
+        <img class="icon__v" src="../image/figma/v7.svg" alt="">
+        <img class="icon__v" src="../image/figma/v8.svg" alt="">
+      </span>
+    </button>
+  </div>
+</header>
+
+<nav class="navbar" aria-label="Điều hướng">
+  <button class="navbar__toggle" aria-label="Menu" type="button">☰ Menu</button>
+  <div class="navbar__tabs">
+    <a class="tab" href="../index.html" data-tab="home">Trang chủ</a>
+    <a class="tab" href="kho.html" data-tab="inventory">Kho thiết bị</a>
+    <a class="tab" href="dang-ky-phong-hoc.html" data-tab="rooms">Đăng ký phòng học</a>
+    <a class="tab" href="kho-ca-nhan.html" data-tab="personal">Kho cá nhân</a>
+    <a class="tab" href="news.html" data-tab="news">Tin tức</a>
+    <a class="tab" href="contact.html" data-tab="contact">Liên hệ</a>
+  </div>
+</nav>
+
+<!-- include ở cuối body -->
+<script src="../js/auth.js" defer></script>
+<script src="../js/main.js" defer></script>

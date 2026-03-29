@@ -1,9 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kho Cá Nhân - Hệ Thống Mượn/Trả Thiết Bị SEB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <!-- Link CSS chung từ thư mục css -->
   <link rel="stylesheet" href="../css/styles.css">
   <style>
@@ -69,14 +72,14 @@
       gap: 0.5rem;
     }
 
-    .tabs {
+    .history-tabs {
       display: flex;
       gap: 1rem;
       border-bottom: 2px solid var(--border-color);
       margin-bottom: 1.5rem;
     }
 
-    .tab {
+    .history-tab {
       padding: 0.75rem 1rem;
       border: none;
       background: none;
@@ -88,7 +91,7 @@
       transition: all 0.3s;
     }
 
-    .tab.active {
+    .history-tab.active {
       color: var(--banner-blue);
       border-bottom-color: var(--banner-blue);
     }
@@ -186,11 +189,11 @@
     }
 
     @media (max-width: 37.5rem) {
-      .tabs {
+      .history-tabs {
         gap: 0.5rem;
       }
 
-      .tab {
+      .history-tab {
         padding: 0.5rem 0.75rem;
         font-size: var(--fs-sm);
       }
@@ -202,41 +205,48 @@
     }
   </style>
 </head>
-<body>
+<body data-require-auth="true" data-auth-redirect="kho-ca-nhan-request-login.html">
   <div class="page">
     <!-- Nút trang chủ ở góc trên bên trái -->
     <a href="../index.html" class="home-btn" title="Trang chủ">🏠</a>
 
-    <!-- Banner (phần header) -->
-    <header class="banner">
-      <div class="banner-logo">
+    <!-- Banner (pháº§n header) -->
+
+        <header class="banner" aria-label="Banner">
+      <div class="banner__logo" aria-hidden="true">
         <img src="../image/figma/logo.png" alt="Logo Trường">
       </div>
-      <div class="banner-content">
-        <div class="banner-heading">TRƯỜNG TRUNG HỌC CƠ SỞ LỘC AN</div>
-        <div class="banner-subheading">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ (SEB)</div>
+
+      <div class="banner__titles">
+        <p class="banner__school">TRƯỜNG TRUNG HỌC CƠ SỞ LỘC AN</p>
+        <p class="banner__name">HỆ THỐNG MƯỢN/TRẢ THIẾT BỊ ( SEB)</p>
       </div>
-      <div class="banner-actions">
-        <a href="home-login.html" class="banner-action" aria-label="Hồ sơ">
-          👤 Nguyễn Văn A
+
+      <div class="banner__actions" aria-label="Hành động">
+        <a href="login.html" class="banner__action" type="button" aria-label="Đăng nhập">
+          <span class="icon icon--user" aria-hidden="true">
+            <img class="icon__v" src="../image/figma/v9.svg" alt="">
+            <img class="icon__v" src="../image/figma/v10.svg" alt="">
+          </span>
         </a>
-        <a href="../index.html" class="banner-action" aria-label="Đăng xuất">
-          ✏️
-        </a>
+        <button class="banner__action" type="button" aria-label="Tùy chỉnh">
+          <span class="icon icon--brush" aria-hidden="true">
+            <img class="icon__v" src="../image/figma/v7.svg" alt="">
+            <img class="icon__v" src="../image/figma/v8.svg" alt="">
+          </span>
+        </button>
       </div>
     </header>
 
     <!-- Thanh điều hướng -->
     <nav class="navbar">
+      <button class="navbar__toggle" aria-label="Menu" type="button">☰ Menu</button>
       <div class="navbar__tabs">
         <a class="tab" href="../index.html" data-tab="home">Trang chủ</a>
         <a class="tab" href="kho-loged.html" data-tab="inventory">Kho thiết bị</a>
         <a class="tab" href="dang-ky-phong-hoc.html" data-tab="rooms">Đăng ký phòng học</a>
         <a class="tab tab--active" href="kho-ca-nhan.html" data-tab="personal">Kho cá nhân</a>
         <a class="tab" href="home-login.html" data-tab="profile">Hồ sơ</a>
-      </div>
-    </nav>
-        <span>📦 KHO CÁ NHÂN</span>
       </div>
     </nav>
 
@@ -289,11 +299,11 @@
         <h2 class="section-title">Lịch Sử Mượn/Trả</h2>
 
         <!-- Tabs -->
-        <div class="tabs">
-          <button class="tab active" onclick="switchTab(this, 'all')">Tất Cả</button>
-          <button class="tab" onclick="switchTab(this, 'borrowed')">Đang Mượn</button>
-          <button class="tab" onclick="switchTab(this, 'returned')">Đã Trả</button>
-          <button class="tab" onclick="switchTab(this, 'broken')">Báo Hỏng</button>
+        <div class="history-tabs">
+          <button class="history-tab active" onclick="switchTab(this, 'all')">Tất Cả</button>
+          <button class="history-tab" onclick="switchTab(this, 'borrowed')">Đang Mượn</button>
+          <button class="history-tab" onclick="switchTab(this, 'returned')">Đã Trả</button>
+          <button class="history-tab" onclick="switchTab(this, 'broken')">Báo Hỏng</button>
         </div>
 
         <!-- All Tab -->
@@ -374,10 +384,12 @@
     </div>
   </div>
 
+  <script src="../js/auth.js" defer></script>
+  <script src="../js/main.js" defer></script>
   <script>
     function switchTab(element, tabName) {
       // Update tab active state
-      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.history-tab').forEach(tab => tab.classList.remove('active'));
       element.classList.add('active');
       
       // Show corresponding content
@@ -389,3 +401,5 @@
   </script>
 </body>
 </html>
+
+
